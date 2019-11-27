@@ -7,7 +7,7 @@ disp([' 程序开始时间：【',start_time,'】']);
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
-load('/public1/home/sc40009/jobs/20191119_25keV/program/mark_1120.mat');
+load('/public1/home/sc40009/jobs/test1/mark_1120.mat');
 disp('读取完毕，开始设定参数……');
 toc
 
