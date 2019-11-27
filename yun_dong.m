@@ -14,7 +14,7 @@ else
     V2 = V1;
     [~,~,~,~,dt]= settings(1);%时间间隔
     if ci_chang_fan_wei(P1) == 1
-        for k = 1:30000 %最多运动3000mm
+        for k = 1:3000 %最多运动300mm
             if  ci_chang_fan_wei(P1)
                 P1 = P2+dt.*V1;%新位置
                 V1 = su_du(P2,V2,Fx,Fy,Fz);%求出新速度
