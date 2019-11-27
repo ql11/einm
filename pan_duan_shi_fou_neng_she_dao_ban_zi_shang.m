@@ -15,7 +15,7 @@ if length(V) ~= 3
 elseif -0.0005 < P(3) && P(3)<  0.0005 %射出位置在z = 0表面
 %开始判断
     absP = abs(P);
-    if absP(1)< Q(1) && absP(2)< Q(2)
+    if absP(1) <= Q(1) && absP(2) <= Q(2)
 
         I = 1==1;%输出真
     else
