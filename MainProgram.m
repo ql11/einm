@@ -80,7 +80,7 @@ parfor k = 0:(Total - 1)
     end
     
     %*******显示落点*********
-    absW = abs(W);
+ 
     
 
     fprintf(fid_6,[num2str(W),'\n']);
