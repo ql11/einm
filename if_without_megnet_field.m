@@ -6,23 +6,25 @@ function [I,W] = if_without_megnet_field(P,V)
 if length(V) ~= 3
     disp('输入错误，不是速度矢量');
     I = 1==0; %输出假
-    W = [100 100];
+    W = [1 1];
     return
 elseif V(3) >= 0 %z方向速度为向上
     I = 1==0; %输出假
-    W = [100 100];
+    W = [2 2];
     return
 else
-%开始判断
-    [MFA,~,~,Q,~]=settings(1);
+    %计算
+    [~,~,~,Q,~]=settings(1);
     vz = abs(V(3));
-    t = MFA(3)/vz;%时间
+    t = 1.17/vz;%时间
     W(1) = P(1) + t*V(1);
     W(2) = P(2) + t*V(2);%输出落点
     
+    
+    %开始判断
     Pxy(1) = abs(W(1));
     Pxy(2) = abs(W(2));%计算落点绝对值
-   
+    
     I = Pxy(1) <= Q(1) & Pxy(2)<= Q(2); %判断位置
-
+    
 end

@@ -1,10 +1,9 @@
-
 tic
-Fx = scatteredInterpolant(MF(:,1:3),MF(:,4));
+Fx = scatteredInterpolant(Point,Bx00);
 toc
 tic
-Fy = scatteredInterpolant(MF(:,1:3),MF(:,5));
+Fy = scatteredInterpolant(Point,By00);
 toc
 tic
-Fz = scatteredInterpolant(MF(:,1:3),MF(:,6));
+Fz = scatteredInterpolant(Point,Bz00);
 toc
