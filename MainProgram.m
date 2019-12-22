@@ -3,7 +3,7 @@
 start_time = datestr(now,' 日期yyyy-mm-dd 时间HH:MM:SS');
 disp([' 程序开始时间：【',start_time,'】']);
 
-fid=fopen('程序记录日期yyyy-mm-dd.txt','w');
+fid=fopen('程序记录.txt','w');
 fprintf(fid,['程序开始时间：【',start_time,'】','\n']);
 fid_1 = fopen('output/【数据记录】所有击中目标区域的电子.txt','w');
 fid_2 = fopen('output/【数据记录】无磁场时会打到目标区域的电子.txt','w');
@@ -36,7 +36,7 @@ Total = lx*ly*lphi*lsita;%总数
 parfor k = 0:(Total - 1)
     [mx,my,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita);
     P0 = [mx/1000,my/1000,0.01999];
-    fid=fopen('程序记录日期yyyy-mm-dd.txt','a');
+    fid=fopen('程序记录.txt','a');
     fid_1 = fopen('output/【数据记录】所有击中目标区域的电子.txt','a');
     fid_2 = fopen('output/【数据记录】无磁场时会打到目标区域的电子.txt','a');
     fid_3 = fopen('output/【数据记录】无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子.txt','a');
@@ -102,7 +102,7 @@ end_time = datestr(now,' 日期yyyy-mm-dd 时间HH:MM:SS');
 
 disp([' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
 
-fid=fopen('程序记录20190108.txt','a');
+fid=fopen('程序记录.txt','a');
 
 fprintf(fid,[' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】','\n']);
 
