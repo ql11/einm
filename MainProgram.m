@@ -15,6 +15,9 @@ fid_7 = fopen('output/【数据记录】计算的电子个数.txt','w');
 
 fclose(fid);
 fclose(fid_1);fclose(fid_2);fclose(fid_3);fclose(fid_4);fclose(fid_5);fclose(fid_6);fclose(fid_7);
+
+parpool('local')%开启并行运算池
+
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
@@ -35,7 +38,7 @@ angle = 180;
 
 lx = 152;ly = 152;lphi = 181;lsita = 11;
 Total = lx*ly*lphi*lsita;%总数
-parpool('local')
+
 parfor k = 0:(Total - 1)
     [mx,my,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita);
     P0 = [mx/1000,my/1000,0.01999];
