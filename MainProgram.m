@@ -18,7 +18,9 @@ fclose(fid_1);fclose(fid_2);fclose(fid_3);fclose(fid_4);fclose(fid_5);fclose(fid
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
-load('/public1/home/sc40009/jobs/Ger20kev/121601.mat');
+%load('/public1/home/sc40009/jobs/Ger20kev/121601.mat');
+load('/public1/home/sc40009/jobs/GerF/output/121601.mat');
+
 disp('0110_V.mat读取完毕，开始设定参数……');
 toc
 
