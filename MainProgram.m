@@ -35,8 +35,7 @@ angle = 180;
 
 lx = 152;ly = 152;lphi = 181;lsita = 11;
 Total = lx*ly*lphi*lsita;%总数
-parpool('local',56);
-
+parpool('local',56)
 parfor k = 0:(Total - 1)
     [mx,my,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita);
     P0 = [mx/1000,my/1000,0.01999];
