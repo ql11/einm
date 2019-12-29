@@ -35,6 +35,11 @@ lx = 152;ly = 152;lphi = 181;lsita = 11;
 Total = lx*ly*lphi*lsita;%总数
 
 parfor k = 0:(Total - 1)
+    kTo_1 = k/(Total-1);
+    if rem(kTo_1,0.00001) == 0
+        disp(sprintf('%2.2f%%', kTo_1*100)); %显示运算进度
+    end
+
     [mx,my,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita);
     P0 = [mx/1000,my/1000,0.01999];
     fid=fopen('程序记录.txt','a');
