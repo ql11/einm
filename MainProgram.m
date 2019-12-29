@@ -19,8 +19,6 @@ parpool('local')%开启并行运算池
 disp('程序开始，读取磁场数据中……');
 tic
 load('/public1/home/sc40009/jobs/Ger20kev/121601.mat');
-
-
 disp('0110_V.mat读取完毕，开始设定参数……');
 toc
 
