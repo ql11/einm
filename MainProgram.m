@@ -13,7 +13,7 @@ fid_7 = fopen('【数据记录】计算的电子个数.txt','w');
 fclose(fid);
 fclose(fid_1);fclose(fid_6);fclose(fid_7);
 
-parpool('local',32)； %开启并行池
+parpool('local',32); %开启并行池
 
 
 %% 第一步读取磁场数据*********
