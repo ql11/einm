@@ -19,7 +19,7 @@ parpool（‘local’,32)； %开启并行池
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
-load('/public1/home/sc40009/jobs/Ger20kev/121601.mat');
+load('/public1/home/sc40009/jobs/long_20kev_123/Bdata20200122.mat');
 disp('0110_V.mat读取完毕，开始设定参数……');
 toc
 
