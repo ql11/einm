@@ -3,7 +3,7 @@
 start_time = datestr(now,' 日期yyyy-mm-dd 时间HH:MM:SS');
 disp([' 程序开始时间：【',start_time,'】']);
 
-disp(['程序开始，读取磁场数据中……']);
+disp('程序开始，读取磁场数据中……');
 %*******第一步读取磁场数据*********
 % tic
 % load('0110_V.mat');

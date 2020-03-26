@@ -4,7 +4,7 @@ if length(P0) ~= 3 || length(V0) ~= 3 %例行判断参数
     disp('运动计算错误：输入的不是坐标或矢量');
     P = [];
     V = [];
-    pic
+    pic = [];
     return
 else
     P1 = P0;

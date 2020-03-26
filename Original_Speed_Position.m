@@ -17,9 +17,7 @@ lphi = 19; % 0°~180°，每10°一个点
 
 lsita = 21; % -20°~20°，每2°一个点
 
-
-Total = lx*ly*lphi*lsita%总数
-[mx,my,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita)
+[mx,my,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita);
 %*****计算运动******
 P0 = [(mx/120)*0.120,(my/120)*0.120,0.055];
 V0 = [v*cos(-((msita/180)/180+90/180)*pi)*sin((mphi/180)*pi), ...
