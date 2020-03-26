@@ -12,9 +12,9 @@ else
     pic = P0;%画图用
     V1 = V0;
     V2 = V1;
-    [~,~,~,~,dt]= settings(1);%时间间隔
+    dt = 1e-3/nrom(V0);%时间间隔 1mm 所花的时间
     if ci_chang_fan_wei(P1) == 1
-        for k = 1:30000 %运动3m
+        for k = 1:30000 %最多运动3000mm
             if  ci_chang_fan_wei(P1)
                 P1 = P2+dt.*V1;%新位置
                 V1 = su_du(P2,V2,Fx,Fy,Fz);%求出新速度

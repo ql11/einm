@@ -12,7 +12,7 @@ else
     pic = P0;%画图用
     V1 = V0;
     V2 = V1;
-    [~,~,~,~,dt]= settings(1);%时间间隔
+    dt= 1e-3/norm(V0);%时间间隔
     if ci_chang_fan_wei(P1) == 1
         for k = 1:30000 %运动3m
             if  ci_chang_fan_wei(P1)
