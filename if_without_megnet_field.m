@@ -14,7 +14,7 @@ elseif V(3) >= 0 %z方向速度为向上
     return
 else
 %开始判断
-    [MFA,~,~,Q,~]=settings(1);%Q = [0.0705 0.0705];
+    [MFA,~,~,Q]=settings(1);%Q = [0.0705 0.0705];
     vz = abs(V(3));
     t = (0.355+MFA(3))/vz;%时间
     W(1) = P(1) + t*V(1);

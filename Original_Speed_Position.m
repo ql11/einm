@@ -10,12 +10,10 @@ function [P0,V0] = Original_Speed_Position(k)
 
 v= Cal_V(1000e3);%速度大小Cal_V()
 
-lx = 36; % 0~140，每4mm一个点
-ly = 36; % 0~140，每4mm一个点
-
-lphi = 19; % 0°~180°，每10°一个点
-
-lsita = 21; % -20°~20°，每2°一个点
+lx = 50; % 0~49，每1mm一个点
+ly = 20; % 120~139，每1mm一个点
+lphi = 46; % 0°~180°，每4°一个点
+lsita = 11; % -20°~20°，每4°一个点
 
 [mx,my,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita);
 %*****计算运动******

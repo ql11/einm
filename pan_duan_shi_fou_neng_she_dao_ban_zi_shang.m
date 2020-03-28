@@ -2,7 +2,7 @@ function [I,W] = pan_duan_shi_fou_neng_she_dao_ban_zi_shang(P,V)
 %电子经过磁场后，是否能射到板子上呢，是输出真
 
 %Fanwei = [0.131 0.131 0.015];%这个是设定的磁场范围，可以放进自变量
-[MFA,~,~,Q,~]=settings(1);
+[MFA,~,~,Q]=settings(1);
 if length(V) ~= 3
     disp('输入错误，不是速度矢量');
     I = 1==0; %输出假

@@ -1,6 +1,6 @@
 function F = ci_chang_fan_wei(P)
 %判断点的位置是否在磁场影响范围内的函数，返回逻辑1或者0
-[Q,~,~,~,~]=settings(1);
+[Q,~,~,~]=settings(1);
 if length(P) ~= 3
     disp('磁场范围错误：输入的不是坐标');
     F = 0;

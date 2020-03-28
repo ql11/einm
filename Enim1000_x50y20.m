@@ -3,28 +3,29 @@ parpool('local',32); %开启并行池
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
 
-addpath('/public1/home/sc40009/jobs/Enim_Total');
+
+%不同运算，不同参数
+x50y20_path = '/public1/home/sc40009/jobs/x50y20';
+field_file =  'data_V1031.mat';
+Ek = 1000e3; %todo
+
+addpath(x50y20_path);
+
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
-load('/public1/home/sc40009/jobs/Enim_Total/data_V1031.mat');
-disp('data_V1031.mat读取完毕，开始设定参数……');
+load([x50y20_path,'/',field_file]);
+disp([field_file,'读取完毕，开始设定参数……']);
 toc
 
 %% 第二步设定参数初始值*********
-Ek = 1000e3; %todo
 v= Cal_V(Ek);
-
-
-
 disp('参数设定完毕，开始循环计算……');
 
-lx = 36; % 0~140，每4mm一个点
-ly = 36; % 0~140，每4mm一个点
-
-lphi = 19; % 0°~180°，每10°一个点
-
-lsita = 21; % -20°~20°，每2°一个点
+lx = 50; % 0~49，每1mm一个点
+ly = 20; % 120~139，每1mm一个点
+lphi = 46; % 0°~180°，每4°一个点
+lsita = 11; % -20°~20°，每4°一个点
 
 Total = lx*ly*lphi*lsita;%总数
 EM1 = zeros(Total,1);% 击中目标区域
@@ -84,7 +85,7 @@ end
 end_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 
 %% 总结
-fid = fopen(['/public1/home/sc40009/jobs/Enim_Total/',num2str(Ek/1000),'keV结果概览.txt'],'w');
+fid = fopen([x50y20_path,'/',num2str(Ek/1000),'keV结果概览.txt'],'w');
 
 disp(['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
 fprintf(fid,['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
@@ -93,5 +94,5 @@ disp(['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】'
 fprintf(fid,['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】','无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子数【',num2str(sum(EM3)),'】','无磁场时不会打到目标区域，而加上磁场之后会打到目标区域的电子数【',num2str(sum(EM4)),'】','无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子数【',num2str(sum(EM5)),'】',]);
 fclose(fid);
 
-save(['/public1/home/sc40009/jobs/Enim_Total/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5');
-save(['/public1/home/sc40009/jobs/Enim_Total/',num2str(Ek/1000),'keV电子落点.mat'],'EMP');
+save([x50y20_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5');
+save([x50y20_path,'/',num2str(Ek/1000),'keV电子落点.mat'],'EMP');

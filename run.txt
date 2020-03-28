@@ -1,1 +1,0 @@
-run('/public1/home/sc40009/NOA-PMD-deflect efficiency/500keV/Enim.m');

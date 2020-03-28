@@ -8,7 +8,7 @@ else
     v = norm(V0);%速度绝对值
     c = 3e8;%光速
     m = 9.109382e-12./sqrt(1 - v^2/c^2);%狭义相对论质量*10e19
-    dt = 1e-3/norm(V0);%时间间隔 1mm 所花的时间
+    dt = 1e-3/v;%时间间隔 1mm 所花的时间
     B = ci_chang_zhi(P,Fx,Fy,Fz);%磁场值
     q = -1.60217662;%电荷量*10e19
     F = q.*cross(V0,B);  %受力
