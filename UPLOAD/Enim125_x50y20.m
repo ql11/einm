@@ -7,7 +7,7 @@ disp(['程序开始时间：【',start_time,'】']);
 %不同运算，不同参数
 x50y20_path = '/public1/home/sc40009/jobs/x50y20';
 field_file =  'data_V1031.mat';
-Ek = 1000e3; 
+Ek = 125e3; 
 
 addpath(x50y20_path);
 
