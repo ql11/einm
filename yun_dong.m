@@ -20,19 +20,14 @@ else
                 V1 = su_du(P2,V2,Fx,Fy,Fz);%求出新速度
                 P2 = P1;%更新位置
                 V2 = V1;%更新速度
-%                pic = [pic;P1];%存储位置便于画图
-%                 if rem(k,100) == 0
-%                     %k
-%                 end
             else
-%                 disp('已经穿出磁场');
                 P = P1;
                 V = V1;
                 return
             end
-
         end
         disp('循环次数不够');
+    else
         P = P1;
         V = V1;
     end
