@@ -6,7 +6,35 @@ function [mx,my,mz,mphi,msita] = floopsettings(k,lx,ly)
     Special_sita = [3.00 5.85 9.05 5.85	7.72 10.36 9.05	10.36 12.47];
     my = mod(k-1,lx);
     mx = ((k - 1) - my)/ly;
-    n = ceil(9*k/lx/ly);%向上取整1~9
+    
+    n47 = (lx - 1)/3;
+
+    if mx <= n47
+        if my <= n47
+            n = 1;
+        elseif my <= 2*n47
+            n = 2;
+        else
+            n = 3;
+        end
+    elseif mx <= 2*n47
+        if my <= n47
+            n = 4;
+        elseif my <= 2*n47
+            n = 5;
+        else
+            n = 6;
+        end
+    else
+        if my <= n47
+            n = 7;
+        elseif my <= 2*n47
+            n = 8;
+        else
+            n = 9;
+        end
+    end
+
     mz = Special_z(n);
     mphi = Special_phi(n);
     msita = Special_sita(n);
