@@ -15,7 +15,7 @@ load('/public1/home/sc40009/jobs/Enim_Total/data_V1031.mat');
 disp('data_V1031.mat读取完毕，开始设定参数……');
 toc
 
-for E = [50 75 100 125 150 300 500 700 900 1000]
+for E = [300 500 700 900 1000]
     %% step2 设定参数初始值
     Ek = 1000*E;
     v= Cal_V(Ek);
