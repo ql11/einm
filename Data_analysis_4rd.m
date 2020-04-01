@@ -16,53 +16,47 @@ for i = 1:9
     load([path,'/',num2str(E),'keV计算结果.mat']);
     load([path,'/',num2str(E),'keV电子落点.mat']);
     %电子落点图
-    figure
-    scatter(EMP(:,1),EMP(:,2),'.');
+    %figure
+    %scatter(EMP(:,1),EMP(:,2),'.');
     Data = zeros(Total,5);
-    parfor k = 1:Total
+    for k = 1:Total
         if EM1(k) == 1
-            Data(k,:) = floopsettings(k,lx,ly);
+            [Data(k,1),Data(k,2),~,~,~] = floopsettings(k,lx,ly);
+
+            my = mod(k-1,lx);
+            mx = ((k - 1) - my)/ly;  
+            n47 = (lx - 1)/3;
+            if mx <= n47
+                if my <= n47
+                    n = 1;
+                elseif my <= 2*n47
+                    n = 2;
+                else
+                    n = 3;
+                end
+            elseif mx <= 2*n47
+                if my <= n47
+                    n = 4;
+                elseif my <= 2*n47
+                    n = 5;
+                else
+                    n = 6;
+                end
+            else
+                if my <= n47
+                    n = 7;
+                elseif my <= 2*n47
+                    n = 8;
+                else
+                    n = 9;
+                end
+            end
+
+            E_count(i,n) = E_count(i,n) + 1;
         end
     end
     figure
     scatter(Data(:,1),Data(:,2),'.');
-
-
-    % 分片
-    for k = 1:Total
-        my = mod(k-1,lx);
-        mx = ((k - 1) - my)/ly;  
-        n47 = (lx - 1)/3;
-        if mx <= n47
-            if my <= n47
-                n = 1;
-            elseif my <= 2*n47
-                n = 2;
-            else
-                n = 3;
-            end
-        elseif mx <= 2*n47
-            if my <= n47
-                n = 4;
-            elseif my <= 2*n47
-                n = 5;
-            else
-                n = 6;
-            end
-        else
-            if my <= n47
-                n = 7;
-            elseif my <= 2*n47
-                n = 8;
-            else
-                n = 9;
-            end
-        end
-        if EM1(k) == 1
-            E_count(i,n) = E_count(i,n) + 1;
-        end
-
-    end
     disp([num2str(E),'击中个数:',num2str(E_count(i,:))]);
     
 end
