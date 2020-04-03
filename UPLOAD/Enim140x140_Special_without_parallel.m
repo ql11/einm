@@ -1,10 +1,7 @@
 %*************************循环主程序********************************
 %% step0 基础准备
 %开启并行池
-parpool('local',46);
-parfor k = 1:46
-    disp(num2str(k));
-end
+parpool('local',32);
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
 % 设定工作路径
@@ -18,7 +15,7 @@ load('/public1/home/sc40009/jobs/Enim_Total/data_V1031.mat');
 disp('data_V1031.mat读取完毕，开始设定参数……');
 toc
 
-parfor E = [50 75 100 125 150 300 500 700 900 1000]
+for E = [50 75 100 125 150 300 500 700 900 1000]
     %% step2 设定参数初始值
     Ek = 1000*E;
     v= Cal_V(Ek);
