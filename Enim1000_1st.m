@@ -33,7 +33,7 @@ for E = [50 75 100 125 150 300 500 700 900 1000]
     
     %% step3 循环计算
     disp('参数设定完毕，开始循环计算……');
-    parfor k = 1:Total
+    for k = 1:Total
         [mx,my,mz,mphi,msita] = floopsettings(k,lx,ly);
         %*****计算运动******
         P0 = [mx/1000,my/1000,mz/1000];
