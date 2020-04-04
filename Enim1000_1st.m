@@ -33,7 +33,7 @@ EM3 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后也�
 EM4 = zeros(Total,1);%无磁场时不会打到目标区域，而加上磁场之后会打到目标区域的电子
 EM5 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子
 EMP = zeros(Total,2);%显示落点
-
+EM_record = zeros(Total,13);% 记录序号和初始位置速度、终末位置速度
 parfor k = 1:Total
     [IF_0,mx,my,mz,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita);
     %*****计算运动******
@@ -54,6 +54,7 @@ parfor k = 1:Total
             %disp([nowtime,' ',' 初始速度为 |',num2str(V0), '| 初始位置为 |',num2str(P0), '| ', ' ','穿出速度为 |',num2str(V), '| 穿出位置为 |',num2str(P),'|']);
             EM1(k) = 1;
             % 击中目标区域
+            EM_record(k,:) = [k,P0,V0,P,V];
         end
         
         %*******显示落点*********
