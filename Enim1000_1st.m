@@ -2,8 +2,8 @@
 parpool('local',32); %开启并行池
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
-
-addpath('/public1/home/sc40009/jobs/Enim_Total');
+this_path = '/public1/home/sc40009/jobs/140x140';
+addpath(this_path);
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
 tic
@@ -86,7 +86,7 @@ end
 end_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 
 %% 总结
-fid = fopen(['/public1/home/sc40009/jobs/Enim_Total/',num2str(Ek/1000),'keV结果概览.txt'],'w');
+fid = fopen([this_path,'/',num2str(Ek/1000),'keV结果概览.txt'],'w');
 
 disp(['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
 fprintf(fid,['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
@@ -95,4 +95,4 @@ disp(['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】'
 fprintf(fid,['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】','无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子数【',num2str(sum(EM3)),'】','无磁场时不会打到目标区域，而加上磁场之后会打到目标区域的电子数【',num2str(sum(EM4)),'】','无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子数【',num2str(sum(EM5)),'】',]);
 fclose(fid);
 
-save(['/public1/home/sc40009/jobs/Enim_Total/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EMP','EM_record');
+save([this_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EMP','EM_record');
