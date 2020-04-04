@@ -1,5 +1,5 @@
 %*************************循环主程序********************************
-parpool('local',32); %开启并行池
+
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
 
@@ -34,7 +34,7 @@ EM4 = zeros(Total,1);%无磁场时不会打到目标区域，而加上磁场之�
 EM5 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子
 EMP = zeros(Total,2);%显示落点
 EM_record = zeros(Total,13);% 记录序号和初始位置速度、终末位置速度
-parfor k = 1:Total
+for k = 1:Total
     [IF_0,mx,my,mz,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita);
     %*****计算运动******
     if IF_0 == 1
