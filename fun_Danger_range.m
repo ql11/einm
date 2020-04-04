@@ -1,12 +1,12 @@
-function IF = fun_Danger_range(k,P_V)
+function IF = fun_Danger_range(k,m_phi,m_theta)
 %fun_Danger_range - 判断电子摄入角度是不是危险角度
 %
-% Syntax: IF = fun_Danger_range(k,P_V)
+% Syntax: IF = fun_Danger_range(k,mark_phi,mark_theta)
 %
 % Long description
 
-a = P_V(3);
-b = P_V(4);
+a = m_phi*m_theta/abs(m_theta);
+b = 180 - m_theta;
 IF = 0;
 if k == 1
     if (a >= -180 && a <= -50)||(a >= 170 && a < 180)&&(b >= 165 && b <= 180)
