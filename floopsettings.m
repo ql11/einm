@@ -38,5 +38,5 @@ function [IF,mx,my,mz,mphi,msita] = floopsettings(k,~,ly,lphi,lsita)
     mphi = floor(mod(mod(k,(ly*lphi*lsita)),(lphi*lsita))/lsita);
     msita = mod(mod(mod(k,(ly*lphi*lsita)),(lphi*lsita)),lsita) - 20;
 
-    IF = fun_Danger_range(n,mphi,mtheta);
+    IF = fun_Danger_range(n,mphi,msita);
 end
