@@ -4,26 +4,26 @@ function [IF,mx,my,mz,mphi,msita] = floopsettings(k,~,ly,lphi,lsita)
     mx = floor(k/(ly*lphi*lsita));
     my = floor(mod(k,(ly*lphi*lsita))/(lphi*lsita));
 
-    if mx <= n47
-        if my <= n47
+    if mx <= 47
+        if my <= 47
             n = 1;
-        elseif my <= 2*n47
+        elseif my <= 2*47
             n = 2;
         else
             n = 3;
         end
-    elseif mx <= 2*n47
-        if my <= n47
+    elseif mx <= 2*47
+        if my <= 47
             n = 4;
-        elseif my <= 2*n47
+        elseif my <= 2*47
             n = 5;
         else
             n = 6;
         end
     else
-        if my <= n47
+        if my <= 47
             n = 7;
-        elseif my <= 2*n47
+        elseif my <= 2*47
             n = 8;
         else
             n = 9;
