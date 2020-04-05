@@ -29,15 +29,15 @@ E = 1000;
     Special_phi_2 = [190 150 150 210 180 150 200 180 150];
     %range|165,180|160,180|160,180|160,180|158,180|150,180|150,180|150,180|150,180
     Special_sita_1 = [165 160 160 160 158 150 150 150 150] - 180;%sita角下限
-    Special_sita_2 = [179 179 179 179 179 179 179 179 179] - 180;
+    Special_sita_2 = [180 180 180 180 180 180 180 180 180] - 180;
 
-    lx = (140 - 0)/2 + 1; % 0~140，每2mm一个点
-    ly = (140 - 0)/2 + 1; % 0~140，每2mm一个点
+    lx = 72; % 0~142，每2mm一个点
+    ly = 72; % 0~142，每2mm一个点
     %phi角每个取5°
     lphi = (Special_phi_2 - Special_phi_1)./5 + 1;
     %sita角每个取1°
-    lsita = (Special_sita_2 - Special_sita_1) + 1;
-    Total = lx*ly*sum(lphi.*lsita);%总数
+    lsita = (Special_sita_2 - Special_sita_1);
+    Total = sum(lphi.*lsita.*(lx/3*ly/3)); 
     EM1 = zeros(Total,1);% 击中目标区域
     EM2 = zeros(Total,1);%无磁场时会打到目标区域的电子
     EM3 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子
