@@ -15,7 +15,7 @@ disp('data_V1031.mat读取完毕，开始设定参数……');
 toc
 
 %% 第二步设定参数初始值*********
-for E = [50 75 150 500 700 900]
+E = 1000;
     Ek = 1000*E; %todo
     v= Cal_V(Ek);
 
@@ -31,13 +31,13 @@ for E = [50 75 150 500 700 900]
     Special_sita_1 = [165 160 160 160 158 150 150 150 150] - 180;%sita角下限
     Special_sita_2 = [179 179 179 179 179 179 179 179 179] - 180;
 
-    lx = 142; % 0~141，每1mm一个点
-    ly = 142; % 0~140，每1mm一个点
-    %phi角每个取2°
-    lphi = (Special_phi_2 - Special_phi_1)./2 + 1;
+    lx = (140 - 0)/2 + 1; % 0~140，每2mm一个点
+    ly = (140 - 0)/2 + 1; % 0~140，每2mm一个点
+    %phi角每个取5°
+    lphi = (Special_phi_2 - Special_phi_1)./5 + 1;
     %sita角每个取1°
     lsita = (Special_sita_2 - Special_sita_1) + 1;
-    Total = lx*ly*sum(((Special_phi_2 - Special_phi_1)./2 + 1).*((Special_sita_2 - Special_sita_1) + 1));%总数
+    Total = lx*ly*sum(lphi.*lsita);%总数
     EM1 = zeros(Total,1);% 击中目标区域
     EM2 = zeros(Total,1);%无磁场时会打到目标区域的电子
     EM3 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子
@@ -107,4 +107,3 @@ for E = [50 75 150 500 700 900]
     fclose(fid);
 
     save([this_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EMP','EM_record');
-end
