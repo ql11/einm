@@ -23,14 +23,21 @@ for E = [50 75 150 500 700 900]
 
     disp('参数设定完毕，开始循环计算……');
 
+    Special_z =[40.1 37.8 32.9 37.8	35.5 30.6 32.9 30.6	25.7];
+    %range|-180,-50 170,180|-125,-75 160,180|-125,-75|-180,-150|-180,-100|-170,-100|-140,-100|-180,-150 160,180|-180,-125|-150,-120
+    Special_phi_1 = [50 50 50 100 100 90 120 125 120];%phi角下限
+    Special_phi_2 = [190 150 150 210 180 150 200 180 150];
+    %range|165,180|160,180|160,180|160,180|158,180|150,180|150,180|150,180|150,180
+    Special_sita_1 = [165 160 160 160 158 150 150 150 150] - 180;%sita角下限
+    Special_sita_2 = [179 179 179 179 179 179 179 179 179] - 180;
+
     lx = 142; % 0~141，每1mm一个点
     ly = 142; % 0~140，每1mm一个点
-
-    lphi = 181; % 0°~180°，每1°一个点
-
-    lsita = 41; % -20°~20°，每1°一个点
-
-    Total = lx*ly*lphi*lsita;%总数
+    %phi角每个取2°
+    lphi = (Special_phi_2 - Special_phi_1)./2 + 1;
+    %sita角每个取1°
+    lsita = (Special_sita_2 - Special_sita_1) + 1;
+    Total = lx*ly*sum(((Special_phi_2 - Special_phi_1)./2 + 1).*((Special_sita_2 - Special_sita_1) + 1));%总数
     EM1 = zeros(Total,1);% 击中目标区域
     EM2 = zeros(Total,1);%无磁场时会打到目标区域的电子
     EM3 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子
@@ -39,9 +46,9 @@ for E = [50 75 150 500 700 900]
     EMP = zeros(Total,2);%显示落点
     EM_record = zeros(Total,13);% 记录序号和初始位置速度、终末位置速度
     parfor k = 1:Total
-        [IF_0,mx,my,mz,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita);
+        [mx,my,mz,mphi,msita] = floopsettings((k - 1),lx,ly,lphi,lsita,Special_z,Special_phi_1,Special_sita_1);
         %*****计算运动******
-        if IF_0 == 1
+
             P0 = [mx/1000,my/1000,mz/1000];
             V0 = [v*cos(-(msita/180+90/180)*pi)*sin((mphi/180)*pi), ...
                 v*cos(-(msita/180+90/180)*pi)*cos((mphi/180)*pi), ...
@@ -84,7 +91,7 @@ for E = [50 75 150 500 700 900]
                 EM5(k) = 1;
                 %无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子
             end
-        end
+
     end
 
     end_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
