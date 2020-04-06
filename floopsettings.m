@@ -1,4 +1,4 @@
-%function [mx,my,mz,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita,Special_z,Special_phi_1,Special_sita_1)
+function [mx,my,mz,mphi,msita] = floopsettings(k,lx,ly,lphi,lsita,Special_z,Special_phi_1,Special_sita_1)
     %将嵌套循环化为统一循环；排列次序以第三象限的次序为基准
     %将phi角和sita角放在更高级的位置，先算x和y
     num_x = lx/3;
@@ -32,4 +32,4 @@
     mx = 2*(m_x_0 + n_x*24);
     my = 2*(m_y_0 + n_y*24);
 
-%end
+end
