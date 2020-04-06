@@ -12,7 +12,7 @@ disp('data_V1031.mat读取完毕，开始设定参数……');
 toc
 
 %% 第二步设定参数初始值*********
-E = 500;
+for E = [50 75 100 150 300 700 900]
     Ek = 1000*E; %todo
     v= Cal_V(Ek);
 
@@ -105,4 +105,5 @@ E = 500;
 
     save([this_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EM_record');
     save([this_path,'/',num2str(Ek/1000),'keV电子落点.mat'],'EMP');
+end
 
