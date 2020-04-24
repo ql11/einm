@@ -33,6 +33,7 @@ for E = [20 50 100 300 600 1000]
     for k = 1:Total
         mx = dx*floor((k-1)/ly);
         my = dy*rem(k-1,ly);
+        mz = 50;
         msita = 0; %垂直
         mphi = 0;
         %*****计算运动******
