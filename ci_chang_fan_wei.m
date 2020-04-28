@@ -22,7 +22,8 @@ else
     G = G0 & (G1|G2|G3);
     
     F2 = ~G;
-    F = F1&F2;
+    %F = F1&F2;
+    F = F1;
     
 end
 end
