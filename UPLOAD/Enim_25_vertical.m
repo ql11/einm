@@ -1,5 +1,5 @@
 %*************************循环主程序********************************
-
+programdate = datestr(datetime,'yyyymmdd');
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
 this_path = '/public1/home/sc40009/jobs/140x140_vertical';
@@ -96,7 +96,7 @@ for E = [20 50 100 300 600 1000]
     fprintf(fid,['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】','无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子数【',num2str(sum(EM3)),'】','无磁场时不会打到目标区域，而加上磁场之后会打到目标区域的电子数【',num2str(sum(EM4)),'】','无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子数【',num2str(sum(EM5)),'】',]);
     fclose(fid);
 
-    save([this_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EM_record');
-    save([this_path,'/',num2str(Ek/1000),'keV电子落点.mat'],'EMP');
+    save([this_path,'/',num2str(Ek/1000),'keV计算结果',programdate,'.mat'],'EM1','EM2','EM3','EM4','EM5','EM_record');
+    save([this_path,'/',num2str(Ek/1000),'keV电子落点',programdate,'.mat'],'EMP');
 end
 
