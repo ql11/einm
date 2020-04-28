@@ -1,4 +1,54 @@
 ********
+垂直入射：
+```
+E = 20; %20keV
+Ek = 1000*E; 
+v= Cal_V(Ek);
+dx = 0.25;
+lx = 140/dx+1;
+dy = 0.25;
+ly = 140/dy+1;
+EM_record = zeros(Total,9);% 记录序号和初始位置速度、击中位置    
+Total = lx*ly;
+for k = 1:Total
+    mx = dx*floor((k-1)/ly);
+    my = dy*rem(k-1,ly);
+    mz = 50;
+    msita = 0; %垂直
+    mphi = 0;
+    P0 = [mx/1000,my/1000,mz/1000];
+    V0 = [v*cos(-(msita/180+90/180)*pi)*sin((mphi/180)*pi), ...
+        v*cos(-(msita/180+90/180)*pi)*cos((mphi/180)*pi), ...
+        v*sin(-(msita/180+90/180)*pi)];
+    EM_record(k,1:6) = [P0 V0];
+end
+```
+170°入射
+```
+E = 20; %20keV
+Ek = 1000*E; 
+v= Cal_V(Ek);
+dx = 0.25;
+lx = 140/dx+1;
+dy = 0.25;
+ly = 140/dy+1;
+EM_record = zeros(Total,9);% 记录序号和初始位置速度、击中位置    
+Total = lx*ly;
+for k = 1:Total
+    mx = dx*floor((k-1)/ly);
+    my = dy*rem(k-1,ly);
+    mz = 50;
+    msita = 10; %-170°
+    mphi = 90; 
+    P0 = [mx/1000,my/1000,mz/1000];
+    V0 = [v*cos(-(msita/180+90/180)*pi)*sin((mphi/180)*pi), ...
+        v*cos(-(msita/180+90/180)*pi)*cos((mphi/180)*pi), ...
+        v*sin(-(msita/180+90/180)*pi)];
+    EM_record(k,1:6) = [P0 V0];
+end
+```
+
+********
 2020年4月23日18点10分
 
 1. 垂直入射
