@@ -47,14 +47,14 @@ for E = [20 50 100 300 600 1000]
             
             %*******做判断*********
             [I0,~] = if_without_megnet_field(P0,V0);%没有磁场的时候
-            [I,W] = pan_duan_shi_fou_neng_she_dao_ban_zi_shang(P,V);%做判断
+            [I,W,Pz] = pan_duan_shi_fou_neng_she_dao_ban_zi_shang(P,V);%做判断
 
-
+            EM_record(k,:) = [P0,V0,W,Pz];
             if I
                 %disp([nowtime,' ',' 初始速度为 |',num2str(V0), '| 初始位置为 |',num2str(P0), '| ', ' ','穿出速度为 |',num2str(V), '| 穿出位置为 |',num2str(P),'|']);
                 EM1(k) = 1;
                 % 击中目标区域
-                EM_record(k,:) = [P0,V0,W,-0.3305];
+                
             end
             
             %*******显示落点*********
