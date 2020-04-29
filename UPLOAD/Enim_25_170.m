@@ -2,7 +2,7 @@
 programdate = datestr(datetime,'yyyymmdd');
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
-this_path = '/public1/home/sc40009/jobs/140x140_vertical';
+this_path = '/public1/home/sc40009/jobs/140x140_170';
 addpath(this_path);
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
@@ -34,7 +34,7 @@ for E = [600 700 800 900 1000]
         mx = dx*floor((k-1)/ly);
         my = dy*rem(k-1,ly);
         mz = 50;
-        msita = 0;
+        msita = 10; %-170°
         mphi = 90; 
         %*****计算运动******
 
