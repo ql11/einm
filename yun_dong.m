@@ -12,7 +12,7 @@ function [P,V,pic] = yun_dong(P0,V0,Fx,Fy,Fz)
         pic = P0;%画图用
         V1 = V0;
         V2 = V1;
-        dt = 1e-3/norm(V0);%时间间隔 1mm 所花的时间
+        dt = fun_dt(0)/norm(V0);%时间间隔 1mm 所花的时间
         if ci_chang_fan_wei(P1) == 1
             for k = 1:30000 %最多运动3000mm
                 if  ci_chang_fan_wei(P1)
