@@ -1,8 +1,8 @@
 %*************************循环主程序********************************
-
+programdate = datestr(datetime,'yyyymmdd');
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
-this_path = '/public1/home/sc40009/jobs/140x140_vertical';
+this_path = '/public1/home/sc40009/jobs/140x140_170';
 addpath(this_path);
 %% 第一步读取磁场数据*********
 disp('程序开始，读取磁场数据中……');
@@ -12,7 +12,7 @@ disp('data_V1031.mat读取完毕，开始设定参数……');
 toc
 
 %% 第二步设定参数初始值*********
-for E = [20 50 100 300 600 1000]
+for E = [600 700 800 900 1000]
     Ek = 1000*E; 
     v= Cal_V(Ek);
     disp('参数设定完毕，开始循环计算……');
@@ -33,8 +33,9 @@ for E = [20 50 100 300 600 1000]
     for k = 1:Total
         mx = dx*floor((k-1)/ly);
         my = dy*rem(k-1,ly);
-        msita = 0; %垂直
-        mphi = 0;
+        mz = 50;
+        msita = 10; %-170°
+        mphi = 90; 
         %*****计算运动******
 
             P0 = [mx/1000,my/1000,mz/1000];
@@ -48,12 +49,12 @@ for E = [20 50 100 300 600 1000]
             [I0,~] = if_without_megnet_field(P0,V0);%没有磁场的时候
             [I,W] = pan_duan_shi_fou_neng_she_dao_ban_zi_shang(P,V);%做判断
 
-
+            EM_record(k,:) = [P0,V0,W,-0.3305];
             if I
                 %disp([nowtime,' ',' 初始速度为 |',num2str(V0), '| 初始位置为 |',num2str(P0), '| ', ' ','穿出速度为 |',num2str(V), '| 穿出位置为 |',num2str(P),'|']);
                 EM1(k) = 1;
                 % 击中目标区域
-                EM_record(k,:) = [P0,V0,W,-0.3305];
+                
             end
             
             %*******显示落点*********
@@ -94,7 +95,7 @@ for E = [20 50 100 300 600 1000]
     fprintf(fid,['无磁场时会打到目标区域的电子数【',num2str(sum(EM2)),'】','无磁场时会打到目标区域，加上磁场之后也会打到目标区域的电子数【',num2str(sum(EM3)),'】','无磁场时不会打到目标区域，而加上磁场之后会打到目标区域的电子数【',num2str(sum(EM4)),'】','无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子数【',num2str(sum(EM5)),'】',]);
     fclose(fid);
 
-    save([this_path,'/',num2str(Ek/1000),'keV计算结果.mat'],'EM1','EM2','EM3','EM4','EM5','EM_record');
-    save([this_path,'/',num2str(Ek/1000),'keV电子落点.mat'],'EMP');
+    save([this_path,'/',num2str(Ek/1000),'keV计算结果',programdate,'.mat'],'EM1','EM2','EM3','EM4','EM5','EM_record');
+    save([this_path,'/',num2str(Ek/1000),'keV电子落点',programdate,'.mat'],'EMP');
 end
 
