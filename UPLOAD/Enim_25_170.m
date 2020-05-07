@@ -1,5 +1,6 @@
 %*************************循环主程序********************************
-programdate = datestr(datetime,'yyyymmdd');
+parpool('local',32); %开启并行池
+programdate = datestr(datetime,'yyyymmdd_hhMMss');
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
 this_path = '/public1/home/sc40009/jobs/140x140_170';
@@ -30,7 +31,7 @@ for E = [600 700 800 900 1000]
     EM5 = zeros(Total,1);%无磁场时会打到目标区域，加上磁场之后不会打到目标区域的电子
     EMP = zeros(Total,2);%显示落点
     EM_record = zeros(Total,9);% 记录序号和初始位置速度、击中位置
-    for k = 1:Total
+    parfor k = 1:Total
         mx = dx*floor((k-1)/ly);
         my = dy*rem(k-1,ly);
         mz = 50;
@@ -86,7 +87,7 @@ for E = [600 700 800 900 1000]
     end_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 
     %% 总结
-    fid = fopen([this_path,'/',num2str(Ek/1000),'keV结果概览.txt'],'w');
+    fid = fopen([this_path,'/',num2str(Ek/1000),'keV结果概览',programdate,'.txt'],'w');
 
     disp(['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);
     fprintf(fid,['总计算的电子数【',num2str(Total),'】','击中目标区域的电子数【',num2str(sum(EM1)),'】',' 程序开始时间：【',start_time,'】 程序结束时间【',end_time,'】']);

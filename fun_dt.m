@@ -4,5 +4,5 @@ function output = fun_dt(~)
 % Syntax: output = dt(~)
 %
 % Long description
-    output = 2e-4;
+    output = 1e-5;
 end
