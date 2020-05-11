@@ -1,5 +1,5 @@
 %*************************循环主程序********************************
-parpool('local',32); %开启并行池
+parpool('local',28); %开启并行池
 programdate = datestr(datetime,'yyyymmdd_hhMMss');
 start_time = datestr(now,'日期yyyy-mm-dd 时间HH:MM:SS');
 disp(['程序开始时间：【',start_time,'】']);
